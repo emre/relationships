@@ -9,9 +9,10 @@ class Relationship(object):
     def __init__(self, redis_connection=None, key_list=None, actor=None):
 
         if key_list:
-            default_key_list.update(key_list)
-
-        self.key_list = default_key_list
+            self.key_list = default_key_list.copy()
+            self.key_list.update(key_list)
+        else:
+            self.key_list = default_key_list
 
         if redis_connection:
             self.redis_connection = redis_connection
