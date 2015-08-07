@@ -92,7 +92,7 @@ r('Podolski').follow("Galatasaray")
 
 r("Galatasaray").get_network("/tmp/galatasaray_network.png")
 ```
-
+*(you need graphviz (system library) and pydot (pylibrary) installed to get this functionality.*
 <img src="http://i.imgur.com/HakrxvJ.png">
 
 
