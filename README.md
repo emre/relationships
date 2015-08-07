@@ -1,6 +1,6 @@
 relationships
 ---
-redis backed user relationships on its' simplest form.
+redis backed user relationships on its simplest form.
 
 ####installation
 
