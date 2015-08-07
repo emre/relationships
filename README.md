@@ -60,6 +60,12 @@ r('Guido').friends()
 >>> {'Larry', 'Rasmus'}
 ```
 
+**getting mutual friends**
+
+```python
+r('Guido').mutual_friends('Rasmus')
+```
+
 **getting followers**
 
 ```python
