@@ -151,6 +151,27 @@ class RelationshipsTestCase(unittest.TestCase):
 
         self.assertEqual(r(100).blocked(), set(['10000', '10001', '10002']))
 
+    def test_mutual_friends(self):
+
+        r = Relationship(redis_connection=self.redis_connection)
+
+        r('Emre').follow('Aydan')
+        r('Aydan').follow('Emre')
+
+        r('Emre').follow('Samed')
+        r('Samed').follow('Emre')
+
+        r('Emre').follow('Fka')
+        r('Fka').follow('Emre')
+
+        r('Fka').follow('Aydan')
+        r('Aydan').follow('Fka')
+
+        r('Fka').follow('Samed')
+        r('Samed').follow('Fka')
+
+        self.assertEqual(r('Emre').mutual_friends('Fka'), set(['Samed', 'Aydan']))
+
 
 if __name__ == '__main__':
     unittest.main()

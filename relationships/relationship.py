@@ -1,4 +1,5 @@
 
+
 import redis
 
 from keys import key_list as default_key_list
@@ -80,6 +81,11 @@ class Relationship(object):
             "user:{}:{}".format(self._get_actor(), self.key_list["following"]),
             "user:{}:{}".format(self._get_actor(), self.key_list["followers"]),
         )
+
+    def mutual_friends(self, to_id):
+        actor_friends, to_id_friends = self(self._get_actor()).friends(), self(to_id).friends()
+
+        return actor_friends.intersection(to_id_friends)
 
     def followers(self):
         return self._list_call(self.key_list["followers"])
